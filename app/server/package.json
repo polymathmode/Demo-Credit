@@ -3,6 +3,7 @@
     "start": "node dist/index.js",
     "compile": "tsc",
     "migrate": "npx ts-node -r tsconfig-paths/register ./node_modules/knex/bin/cli.js migrate:latest --knexfile knexfile.js",
+    "rollback": "npx ts-node -r tsconfig-paths/register ./node_modules/knex/bin/cli.js migrate:rollback --knexfile knexfile.js",
     "dev": "nodemon --exec ts-node src/index.ts"
   },
   "dependencies": {

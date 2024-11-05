@@ -15,7 +15,7 @@ export const registerUser = async (req: Request, res: Response, next: NextFuncti
     }
 
     const user = await createUser({ first_name, last_name, email, password, phone, date_of_birth, address, city, state, country, user_type });
-    res.status(201).json({ message: 'User created successfully', user });
+    res.status(201).json({ message: 'User and wallet created successfully', user });
   } catch (error) {
     console.error('Error in registerUser controller:', error);
     next(error);
