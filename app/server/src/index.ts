@@ -46,8 +46,10 @@ import express, { Request, Response, NextFunction } from 'express';
 import dotenv from 'dotenv';
 import knex from './db/knex';
 import userRouter from './routes/user.routes';
-import cors from 'cors';  // For handling CORS
-import morgan from 'morgan';  // For logging
+import walletRouter from "./routes/wallet.route"
+import transactionRouter from "./routes/transactions.route"
+import cors from 'cors'; 
+import morgan from 'morgan';  
 
 dotenv.config();
 
@@ -61,6 +63,8 @@ app.use(express.urlencoded({ extended: true }));  // Parse URL-encoded bodies
 
 // API routes
 app.use("/api/user", userRouter);  // Added /api prefix and fixed path
+app.use("/api/wallet",walletRouter)
+app.use("/api/transaction",transactionRouter)
 
 // Error handling middleware
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
