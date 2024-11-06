@@ -1,35 +1,5 @@
 import knex from '../db/knex';
 
-// export async function transferFunds(senderId: number, receiverId: number, amount: number) {
-//   if (senderId === receiverId) {
-//     throw new Error("Cannot transfer funds to the same wallet");
-//   }
-
-//   return await knex.transaction(async (trx) => {
-//     const senderWallet = await trx('wallets').where({ user_id: senderId }).first();
-//     const receiverWallet = await trx('wallets').where({ user_id: receiverId }).first();
-
-//     if (!senderWallet || !receiverWallet) {
-//       throw new Error("Invalid sender or receiver wallet");
-//     }
-
-//     if (senderWallet.balance < amount) {
-//       throw new Error("Insufficient funds");
-//     }
-
-//     // Deduct from sender
-//     await trx('wallets')
-//       .where({ user_id: senderId })
-//       .update({ balance: senderWallet.balance - amount });
-
-//     // Credit receiver
-//     await trx('wallets')
-//       .where({ user_id: receiverId })
-//       .update({ balance: receiverWallet.balance + amount });
-
-//     return { message: "Funds transferred successfully" };
-//   });
-// }
 
 interface Wallet {
   user_id: number;
