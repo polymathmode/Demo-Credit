@@ -40,7 +40,8 @@ app.use((req: Request, res: Response) => {
     });
 });
 
-const PORT = process.env.PORT || 9090;
+const PORT = process.env.PORT  || 3000; 
+
 
 // Function to test database connection
 async function checkDatabaseConnection() {
