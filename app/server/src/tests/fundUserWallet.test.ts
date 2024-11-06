@@ -9,7 +9,7 @@ describe('Fund User Wallet Endpoint', () => {
 
   beforeAll(async () => {
     // Create a user and wallet for the test
-    const userResponse = await request(app).post('/api/user/login').send({
+    const userResponse = await request(app).post('/api/user/create').send({
       first_name: faker.person.firstName(),
       last_name: faker.person.lastName(),
       email: faker.internet.email(),
@@ -49,14 +49,14 @@ describe('Fund User Wallet Endpoint', () => {
   });
 
   it('should return an error if the wallet does not exist for the user', async () => {
-    const nonExistentUserId = 99999; // Assuming this user ID doesn’t exist
+    const nonExistentUserId = 99999; 
     const fundPayload = { amount: 100 };
 
     const response = await request(app)
       .post(`/api/wallet/fundWallet/${nonExistentUserId}`)
       .send(fundPayload);
 
-    expect(response.status).toBe(404); // Now expecting a 404 status
+    expect(response.status).toBe(404); 
     expect(response.body.message).toBe('Wallet not found for the user');
   });
   afterAll(async () => {

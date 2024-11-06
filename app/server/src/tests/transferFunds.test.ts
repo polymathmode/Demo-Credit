@@ -10,12 +10,12 @@ describe('Transfer Funds Endpoint', () => {
 
     beforeAll(async () => {
         // Create sender with sufficient initial balance
-        const senderResponse = await request(app).post('/api/user/login').send({
+        const senderResponse = await request(app).post('/api/user/create').send({
             first_name: faker.person.firstName(),
             last_name: faker.person.lastName(),
             email: faker.internet.email(),
             password: faker.internet.password(),
-            phone: faker.string.numeric(10),  // Ensures 10 numeric characters
+            phone: faker.string.numeric(10),  
             date_of_birth: faker.date.past().toISOString().slice(0, 10),
             address: faker.location.streetAddress(),
             city: faker.location.city(),
@@ -29,7 +29,7 @@ describe('Transfer Funds Endpoint', () => {
         await request(app).post(`/api/wallet/fundWallet/${senderId}`).send({ amount: 1000 });
 
         // Create receiver
-        const receiverResponse = await request(app).post('/api/user/login').send({
+        const receiverResponse = await request(app).post('/api/user/create').send({
             first_name: faker.person.firstName(),
             last_name: faker.person.lastName(),
             email: faker.internet.email(),
@@ -73,7 +73,7 @@ describe('Transfer Funds Endpoint', () => {
     });
 
     it('should return an error if sender has insufficient funds', async () => {
-        const transferPayload = { senderId, receiverId, amount: 10000 }; // Exceed sender’s balance
+        const transferPayload = { senderId, receiverId, amount: 10000 };
 
         const response = await request(app).post('/api/transaction/transfer').send(transferPayload);
 
@@ -82,7 +82,7 @@ describe('Transfer Funds Endpoint', () => {
     });
 
     it('should return an error if either wallet does not exist', async () => {
-        const invalidUserId = 99999; // Non-existent user ID
+        const invalidUserId = 99999; 
         const transferPayload = { senderId: invalidUserId, receiverId, amount: 100 };
 
         const response = await request(app).post('/api/transaction/transfer').send(transferPayload);
