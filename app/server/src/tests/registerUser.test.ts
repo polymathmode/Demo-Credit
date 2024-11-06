@@ -1,6 +1,7 @@
 import request from 'supertest';
 import { app } from '../index'; 
 import { faker } from '@faker-js/faker';
+import knex from '../db/knex';
 
 describe('User Registration Endpoint', () => {
   it('should create a new user and wallet successfully', async () => {
@@ -27,4 +28,7 @@ describe('User Registration Endpoint', () => {
     expect(response.body.user).toHaveProperty('id');
     expect(response.body.user.wallet).toHaveProperty('balance', '0.00');
   });
+  afterAll(async () => {
+    await knex.destroy();
+});
 });
