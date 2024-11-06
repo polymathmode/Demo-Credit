@@ -20,7 +20,7 @@ describe('User Registration Endpoint', () => {
     };
 
     const response = await request(app)
-      .post('/api/user/login')
+      .post('/api/user/create')
       .send(userPayload);
 
     expect(response.status).toBe(201);

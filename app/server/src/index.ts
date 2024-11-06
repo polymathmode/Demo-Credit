@@ -1,6 +1,3 @@
-
-
-
 import express, { Request, Response, NextFunction } from 'express';
 import dotenv from 'dotenv';
 import knex from './db/knex';
@@ -15,13 +12,13 @@ dotenv.config();
 const app = express();
 
 // Middleware
-app.use(cors());  // Enable CORS for all routes
-app.use(morgan('dev'));  // Logging middleware
-app.use(express.json());  // Parse JSON bodies
-app.use(express.urlencoded({ extended: true }));  // Parse URL-encoded bodies
+app.use(cors());  
+app.use(morgan('dev'));  
+app.use(express.json()); 
+app.use(express.urlencoded({ extended: true })); 
 
 // API routes
-app.use("/api/user", userRouter);  // Added /api prefix and fixed path
+app.use("/api/user", userRouter);  
 app.use("/api/wallet",walletRouter)
 app.use("/api/transaction",transactionRouter)
 
@@ -57,22 +54,6 @@ async function checkDatabaseConnection() {
 }
 
 export { app };
-
-
-// // Start the server after confirming the database connection
-// async function startServer() {
-//     await checkDatabaseConnection();
-
-//     app.get('/', (req: Request, res: Response) => {
-//         res.send(`Hello mami!`);
-//     });
-
-//     app.listen(PORT, () => {
-//         console.log(`Server is listening on port ${PORT}`);
-//     });
-// }
-
-// startServer();
 
 
 // Start the server if running directly

@@ -16,11 +16,7 @@ export const fundUserWallet = async (req: Request, res: Response, next: NextFunc
       message: 'Wallet funded successfully',
       wallet: updatedWallet,
     });
-//   } catch (error) {
-//     console.error('Error funding wallet:', error);
-//     next(error);
-//   }
-// };
+
 } catch (error:any) {
   if (error.message === 'Wallet not found for the user') {
      res.status(404).json({ message: 'Wallet not found for the user' });
