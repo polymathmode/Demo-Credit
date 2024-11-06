@@ -2,6 +2,7 @@
 import request from 'supertest';
 import { app } from '../index';
 import { faker } from '@faker-js/faker';
+import knex from '../db/knex';
 
 describe('Fund User Wallet Endpoint', () => {
   let userId: number;
@@ -58,5 +59,8 @@ describe('Fund User Wallet Endpoint', () => {
     expect(response.status).toBe(404); // Now expecting a 404 status
     expect(response.body.message).toBe('Wallet not found for the user');
   });
+  afterAll(async () => {
+    await knex.destroy(); 
+});
 });
 
