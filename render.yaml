@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: my-app
+    env: node
+    branch: main
+    buildCommand: |
+      cd app/server
+      yarn install
+    startCommand: |
+      cd app/server 
+      yarn start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 9090
+      - key: DB
+        value: mysql2
+      - key: DB_USERNAME
+        value: democredit
+      - key: DB_PASSWORD
+        value: 0967
+      - key: KARMA_API_URL
+        value: https://adjutor.lendsqr.com/v2/verification/karma
+      - key: KARMA_API_KEY
+        value: sk_live_t9KYsWFqlebiNrmQVw28lPaMuzKECC2dvwodvmnW
+      - key: KARMA_APP_ID
+        value: fc5906de-7dd4-4984-a18d-e2c7ef2b6453
