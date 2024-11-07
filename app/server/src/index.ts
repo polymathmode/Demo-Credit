@@ -25,8 +25,57 @@ app.get('/', (req: Request, res: Response) => {
     console.log('Received request for root route');
     res.status(200).json({
         success: true,
-        message: 'Welcome to the Demo Credit API'
-    });
+        message: 'Welcome to the Demo Credit API!!🎉🎉 Please test POST route handlers with Postman or curl using sample payload below',
+        
+         routes: {
+    users: {
+        url: 'https://demo-credit-5.onrender.com/api/user/create',
+        method: 'POST',
+        description: 'Create a new user',
+        samplePayload: {
+            "first_name": "Ricky Martin",
+            "last_name": "password123",
+            "email": "example@example.com",
+            "password": "John",
+            "phone": "+2347037110800",
+            "date_of_birth": "1990-05-15",
+            "address": "123 Osapa London",
+            "city": "Lagos",
+            "country": "Nigeria",
+            "user_type": "borrower"
+        }
+     },
+     wallets: {
+        url: 'https://demo-credit-5.onrender.com/api/wallet/fundWallet/:user_id',
+        method: 'POST',
+        description: 'Fund user wallet by user_id',
+        samplePayload: {
+            "amount": 1000,
+        }
+    },
+    transactions: {
+        withdraw: {
+            url: 'https://demo-credit-5.onrender.com/api/transaction/withdraw/:user_id',
+            method: 'POST',
+            description: 'Withdraw funds for user_id',
+            samplePayload: {
+                "amount": 500,
+            }
+        },
+        
+    },
+    transfer: {
+        url: 'https://demo-credit-5.onrender.com/api/transaction/transfer',
+        method: 'POST',
+        description: 'Transfer funds between users',
+        samplePayload: {
+            "senderId": 1,
+            "receiverId": 2,
+            "amount": 500
+        }
+    }
+}
+});
 });
 
 // API routes

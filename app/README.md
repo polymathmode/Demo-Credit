@@ -60,7 +60,7 @@ Run Database Migrations: Run the necessary database migrations to set up tables 
 # run *yarn migrate*
 
 ### Start the application with:
-# run *yarn dev*
+# run *yarn start*
 
 ### Running Tests
 Run all tests with the following command:
