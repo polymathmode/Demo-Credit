@@ -22,6 +22,16 @@ app.use("/api/user", userRouter);
 app.use("/api/wallet",walletRouter)
 app.use("/api/transaction",transactionRouter)
 
+
+// Root route
+app.get('/', (req: Request, res: Response) => {
+    res.status(200).json({
+        success: true,
+        message: 'Welcome to the Demo Credit API'
+    });
+});
+
+
 // Error handling middleware
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     console.error(err.stack);
